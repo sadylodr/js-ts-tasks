@@ -4,5 +4,15 @@
  * @returns {Object}
  */
 module.exports.hundredAfterOdd = function hundredAfterOdd(arr) {
-  throw new Error('Not implemented'); // remove me and write a solution
+  const newArr = [];
+
+  for (let i = 0; i < arr.length; i++) {
+    newArr.push(arr[i]);
+
+    if (arr[i] % 2 !== 0) {
+      newArr.push(100);
+    }
+  }
+
+  return newArr;
 };
