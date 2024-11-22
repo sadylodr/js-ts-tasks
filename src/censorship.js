@@ -14,5 +14,11 @@
  * @returns {function}
  */
 module.exports.censorship = function censorship(forbidden) {
-  throw new Error('Not implemented'); // remove me and write a solution
+  const escapedForbidden = forbidden.map(word => word.replace(/[-/\\^$*+?.()|[\]{}]/g, '\\$&')).sort((a, b) => b.length - a.length);
+
+  const pattern = new RegExp(escapedForbidden.join('|'), 'gi');
+
+  return str => {
+    return str.replace(pattern, match => '*'.repeat(match.length));
+  };
 };
