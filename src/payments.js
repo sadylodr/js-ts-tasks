@@ -23,5 +23,11 @@
  * @returns {function}
  */
 module.exports.payments = function payments(TestUtils) {
-  throw new Error('Not implemented'); // remove this line and create your solution
+  return function calculateNetWorth(income, debts) {
+    const totalIncome = Object.values(income).reduce((sum, value) => sum + value, 0);
+
+    const totalDebts = Object.values(debts).reduce((sum, value) => sum + value, 0);
+
+    return totalIncome - totalDebts;
+  };
 };
